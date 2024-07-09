@@ -24,9 +24,11 @@ RUN pip install -r /tmp/requirements.txt
 
 EXPOSE 8888
 
+RUN pip install metakernel
+
 CMD /usr/local/bin/check_credentials.sh && \
     wolframscript -username $WOLFRAM_ID -password $WOLFRAM_PASSWORD && \
     sleep 2 && \
-    git clone https://github.com/WolframResearch/WolframLanguageForJupyter.git && \
-    # ./configure-jupyter.wls add && \
+    # cd WolframLanguageForJupyter && wolframscript configure-jupyter.wls add && cd .. && \
+    # ./WolframLanguageForJupyter/configure-jupyter.wls add && \
     jupyter lab --ip=* --port=8888 --allow-root --no-browser --notebook-dir=/project --NotebookApp.token='' --NotebookApp.password='' --NotebookApp.default_url='/lab/tree'

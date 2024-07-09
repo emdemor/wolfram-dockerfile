@@ -1,0 +1,3 @@
+[submodule "project/WolframLanguageForJupyter"]
+	path = project/WolframLanguageForJupyter
+	url = https://github.com/WolframResearch/WolframLanguageForJupyter.git
